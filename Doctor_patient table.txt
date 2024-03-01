@@ -1,0 +1,64 @@
+create table doctor (dno int primary key,
+dname varchar(20), 
+city varchar(20));
+
+create table patient (pno int primary key,
+pname varchar(20),
+p_city varchar(20),
+disease varchar(20));
+
+create table dp(dno int
+references doctor,
+pno int references patient,
+fee int);
+
+insert into doctor values(101,'dr.patil','shrirampur');
+insert into doctor values(102,'dr.kumar','pune');
+insert into doctor values(103,'dr.unde','mumbai');
+insert into doctor values(104,'dr.pawar','shrirampur');
+
+insert into patient values(1,'om','pune','covid');
+insert into patient values(2,'sai','pune','asthama');
+insert into patient values(3,'ram','nashik','dengue');
+insert into patient values(4,'sham','mumbai','cancer');
+insert into patient values(5,'aman','pune','covid');
+insert into patient values(6,'dada','shrirampur','dengue');
+insert into dp values(101,2,300);
+insert into dp values(102,3,400);
+insert into dp values(103,1,200);
+insert into dp values(104,5,300);
+insert into dp values(102,6,200);
+insert into dp values(101,4,400);
+insert into dp values(104,1,300);
+
+select * from doctor;
+select * from patient;
+select * from dp;
+
+select * from doctor where city='shrirampur';
+
+select count(*) from patient;
+
+select pname from patient where disease='cancer';
+
+update doctor set city='pune'
+where dname='dr.patil';
+
+select * from doctor;
+
+select * from patient where pname like 'a%';
+
+select patient.* from doctor,patient,dp
+where doctor.dno=dp.dno
+and patient.pno=dp.pno
+and disease='asthama'
+and fee='300'
+and dname='dr.patil'
+and count(*) patient;
+
+select count(*) from doctor,patient,dp
+where doctor.dno=dp.dno
+and patient.pno=dp.pno
+and disease='asthama'
+and fee='300'
+and dname='dr.patil';
