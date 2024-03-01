@@ -1,0 +1,49 @@
+create table item(item_no int primary key,
+name varchar(20), 
+quantity int);
+
+create table supplier(s_no int primary key,
+sname varchar(20),
+city varchar(20));
+
+create table I_s(item_no int
+references item,
+s_no int references supplier,
+rate float);
+
+insert into item values(101,'keyboard',2);
+insert into item values(102,'mouse',5);
+insert into item values(103,'moniter',2);
+
+insert into supplier values(1,'om','pune');
+insert into supplier values(2,'sai','pune');
+insert into supplier values(3,'ram','shrirampur');
+insert into supplier values(4,'sham','shrirampur');
+insert into supplier values(5,'Manu','nashik');
+
+insert into I_s values(101,1,350);
+insert into I_s values(102,1,200);
+insert into I_s values(101,2,400);
+insert into I_s values(102,2,250);
+insert into I_s values(103,4,5000);
+insert into I_s values(102,3,300);
+insert into I_s values(103,4,7500);
+insert into I_s values(101,5,400);
+
+select * from item;
+select * from supplier;
+select * from I_s;
+
+update item
+set quantity='80'
+where name='mouse';
+
+select * from item;
+
+select * from supplier
+where sname like 'M%';
+
+select count(*) from item;
+
+select name from item
+where quantity<10;
