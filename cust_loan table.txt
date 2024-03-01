@@ -1,0 +1,27 @@
+create table customer(cust_no int primary key,
+cust_name varchar(20), 
+address varchar(20),city varchar(20));
+create table loan(loan_no int 
+primary key,loan_amt int);
+create table cl(cust_no int
+references customer,
+loan_no int references loan);
+
+insert into customer values(101,'om','Indiranagar','shrirampur');
+insert into customer values(102,'sai','khanapur','shrirampur');
+insert into customer values(103,'ram','shirdi','shirdi');
+
+insert into loan values(401,500000);
+insert into loan values(402,100000);
+insert into loan values(403,150000);
+insert into loan values(404,250000);
+
+insert into cl values(101,401);
+insert into cl values(101,402);
+insert into cl values(102,403);
+insert into cl values(102,404);
+insert into cl values(103,403);
+
+select * from customer;
+select * from loan;
+select * from cl;
