@@ -1,0 +1,49 @@
+create table student(rno int primary key,
+name varchar(20), 
+city varchar(20));
+
+create table teacher(tno int primary key,
+tname varchar(20),
+phone_no numeric(10),
+salary float);
+
+create table st(rno int
+references student(rno),
+tno int references teacher(tno),
+subject varchar(20));
+
+insert into student values(1,'om','pune');
+insert into student values(2,'sai','mumbai');
+insert into student values(3,'ram','shrirampur');
+insert into student values(4,'sham','shrirampur');
+
+insert into teacher values(101,'Mr.Patil',9699173313,50000);
+insert into teacher values(102,'Mr.Unde',9699173333,70000);
+
+insert into st values(1,101,'DS');
+insert into st values(2,101,'DS');
+insert into st values(3,101,'DS');
+insert into st values(4,102,'DBMS');
+insert into st values(4,101,'DS');
+
+select * from student;
+select * from teacher;
+select * from st;
+
+select name from student 
+where city='pune';
+
+select count(*) from student
+where city='mumbai';
+
+update teacher 
+set phone_no='8888283403'
+where tname='Mr.Unde';
+
+select * from teacher;
+
+select * from teacher
+order by tname;
+
+select tname from teacher
+where salary<60000;
