@@ -1,0 +1,40 @@
+create table product(p_no int primary key,
+p_name varchar(20),
+rate int);
+
+create table wp(w_no int
+references wholesalar,
+p_no int references product,
+quantity int);
+
+insert into wholesalar values(101,'om','pune');
+insert into wholesalar values(102,'sai','pune');
+insert into wholesalar values(103,'ram','shrirampur');
+
+insert into product values(1,'keyboard',190);
+insert into product values(2,'mouse',143);
+insert into product values(3,'moniter',2375);
+insert into product values(4,'harddisk',3800);
+insert into product values(5,'pen drive',475);
+
+insert into wp values(101,1,5);
+insert into wp values(101,2,3);
+insert into wp values(101,3,2);
+insert into wp values(102,4,2);
+insert into wp values(102,5,5);
+insert into wp values(102,1,3);
+
+select * from wholesalar;
+select * from product;
+select * from wp;
+
+select * from wholesalar where city='pune';
+
+select count(*) from wholesalar where city='pune';
+
+select p_name from product where rate>=500;
+
+update product set rate=rate-rate*5/100;
+select * from product;
+
+select * from wholesalar where w_name like 's%';
